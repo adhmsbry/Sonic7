@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Untitled</title>
+  
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>صفحة ويب بخلفية صورة</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url('https://png.pngtree.com/background/20230519/original/pngtree-rain-night-on-the-street-wallpapers-picture-image_2652341.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            position: relative;
+            color: #00ff00;
+        }
+        h1 {
+            font-size: 1.2em;
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 1s ease, transform 1s ease;
+            text-shadow: 0 0 10px rgba(0, 255, 0, 0.8);
+        }
+        .footer {
+            position: absolute;
+            top: 70px; /* وضعها أسفل العنوان */
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 1em;
+            text-shadow: 0 0 10px rgba(255, 255, 0, 1);
+            opacity: 0;
+            transition: opacity 1s ease;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 10px;
+            border-radius: 5px;
+            display: flex; /* استخدام Flexbox */
+            align-items: center; /* محاذاة عمودية */
+            justify-content: center; /* محاذاة أفقية */
+        }
+        .time-box {
+            margin-left: 10px; /* مسافة بين النص والوقت */
+            color: red;
+        }
+        .online {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            font-size: 1em;
+            text-shadow: 0 0 10px rgba(0, 255, 0, 0.7), 0 0 20px rgba(0, 255, 0, 0.5);
+            opacity: 0;
+            transition: opacity 1s ease, transform 1s ease;
+        }
+        .color-box {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 250px;
+            height: 100px;
+            background: linear-gradient(135deg, blue, purple, black, red, orange);
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+            border-radius: 15px;
+            animation: pulse 2s infinite;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            color: white;
+            font-size: 1.5em;
+            text-shadow: 0 0 10px rgba(255, 255, 0, 1);
+        }
+        #randomNumber {
+            color: blue;
+            text-shadow: 0 0 10px rgba(0, 0, 255, 1);
+        }
+        @keyframes pulse {
+            0% {
+                transform: translate(-50%, -50%) scale(1);
+            }
+            50% {
+                transform: translate(-50%, -50%) scale(1.05);
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(1);
+            }
+        }
+        .input-box {
+            position: absolute;
+            width: 80px;
+            height: 40px;
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 1s ease;
+            font-size: 1em;
+            color: white;
+            background: rgba(0, 0, 0, 0.6);
+            text-shadow: 0 0 10px rgba(255, 255, 0, 1);
+        }
+        .input-1 {
+            top: calc(50% + 80px);
+            left: 50%;
+            transform: translate(-50%, 0);
+        }
+        .input-2 {
+            top: calc(50% + 140px);
+            left: 50%;
+            transform: translate(-50%, 0);
+        }
+        .start-button {
+            position: absolute;
+            top: calc(50% + 220px);
+            left: 50%;
+            transform: translate(-50%, 0);
+            background: linear-gradient(45deg, red, orange, yellow, green, blue, indigo, violet);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+            opacity: 1; 
+            transition: background 0.5s ease;
+        }
+        .start-button:hover {
+            background: linear-gradient(45deg, blue, purple, green, yellow);
+        }
+        .message {
+            position: absolute;
+            top: calc(50% + 260px);
+            left: 50%;
+            transform: translate(-50%, 0);
+            font-size: 1.2em;
+            color: yellow;
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+        .platform-selector {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 15px;
+            border-radius: 10px;
+            color: white;
+            font-size: 1em;
+            text-align: center;
+        }
+        .platform-option {
+            display: flex;
+            align-items: center;
+            margin: 5px 0;
+            padding: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .platform-option:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        .platform-option img {
+            width: 30px; 
+            height: 30px; 
+            margin-left: 10px;
+        }
+        .checkmark {
+            color: green;
+            margin-left: 10px;
+            display: none; 
+        }
+    </style>
+</head>
+<body>
+    <h1 id="welcomeText">
+        <span style="color: #00ff00;">WELCOM</span>
+        <span style="color: #ff0000;">TO</span>
+        <span style="color: #0000ff;">MODEL</span>
+        <span style="color: #ffff00;">CRASH</span>
+        <span style="color: #ff00ff;">XX1</span>
+    </h1>
+    
+    <div class="footer" id="footerText">
+        PHONK SCRIPT 
+        <div class="time-box" id="timeBox">00:00:00</div>
+    </div>
+    
+    <div class="online">ONLINE🔋</div>
+    
+    <div class="color-box" id="colorBox">
+        <div id="randomText">يرجي السحب قبل التوقع</div>
+        <div id="randomNumber">0.00</div>
+    </div>
+
+    <!-- حقل الإدخال 1 -->
+    <input type="number" class="input-box input-1" min="1.0" max="33.0" step="0.1" placeholder="أدخل انفجار الأول:">
+    
+    <!-- حقل الإدخال 2 -->
+    <input type="number" class="input-box input-2" min="1.0" max="33.0" step="0.1" placeholder="أدخل انفجار الثاني">
+
+    <!-- زر البدء -->
+    <button class="start-button" id="startButton">𝙎𝙏𝘼𝙍𝙏 𝘼𝙣𝙖𝙡𝙮𝙨𝙞𝙨 𝘾𝙧𝙖𝙨𝙝</button>
+    
+    <!-- رسالة الانتظار -->
+    <div class="message" id="message">الرجاء الانتظار قليلاً...</div>
+
+    <!-- اختيار المنصة -->
+    <div class="platform-selector">
+        <div>يرجى اختيار منصة</div>
+        <div class="platform-option" data-platform="1xbet">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRI0z04QK4Tk4I0y0QSCeTONCO2TCPLDcbZdw&s" alt="1xbet">
+            1XBET
+            <span class="checkmark">✔️</span>
+        </div>
+        <div class="platform-option" data-platform="MELBET">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRggnZTo-4CJkNK28nPc2aZijReswlV4-Zw4NKYrk7f13AsDbC83ig2OadHyd1o3eBElzA&usqp=CAU" alt="MELBET">
+            MELBET
+            <span class="checkmark">✔️</span>
+        </div>
+        <div class="platform-option" data-platform="MEGAPARI">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLQNOnCCCVNMO5iLsOg4AET8qkcA28xDOn3w&s" alt="MEGAPARI">
+            MEGAPARI
+            <span class="checkmark">✔️</span>
+        </div>
+    </div>
+
+    <script>
+        setTimeout(function() {
+            document.getElementById('welcomeText').style.opacity = '1';
+            document.getElementById('welcomeText').style.transform = 'translate(-50%, -20px)';
+        }, 1500);
+        
+        setTimeout(function() {
+            document.querySelector('.footer').style.opacity = '1';
+        }, 2000);
+
+        setTimeout(function() {
+            document.querySelector('.online').style.opacity = '1';
+            document.querySelector('.online').style.transform = 'translate(0, -20px)';
+        }, 2000);
+
+        setTimeout(function() {
+            document.querySelector('.input-1').style.opacity = '1';
+        }, 2500);
+
+        setTimeout(function() {
+            document.querySelector('.input-2').style.opacity = '1';
+        }, 3000);
+
+        document.querySelectorAll('.platform-option').forEach(option => {
+            option.addEventListener('click', function() {
+                document.querySelectorAll('.checkmark').forEach(check => check.style.display = 'none');
+                option.querySelector('.checkmark').style.display = 'inline';
+            });
+        });
+
+        document.getElementById('startButton').addEventListener('click', function() {
+            const input1 = document.querySelector('.input-1').value;
+            const input2 = document.querySelector('.input-2').value;
+
+            if (input1 && input2) {
+                document.getElementById('message').style.opacity = '1';
+
+                setTimeout(function() {
+                    document.getElementById('message').style.opacity = '0';
+                    const randomNumber = (Math.random() * (1.93 - 1.1) + 1.1).toFixed(2);
+                    document.getElementById('randomNumber').textContent = randomNumber;
+                }, 2000);
+            } else {
+                alert("يرجى إدخال رقمين في الحقول.");
+            }
+        });
+
+        // إضافة الكود لعرض الوقت
+        function updateTime() {
+            const now = new Date();
+            const timeString = now.toLocaleTimeString('ar-EG', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+            document.getElementById('timeBox').textContent = timeString;
+        }
+
+        setInterval(updateTime, 1000); // تحديث الوقت كل ثانية
+        updateTime(); // لتحديث الوقت عند تحميل الصفحة
+    </script>
+</body>
+</html>
+<!-- partial -->
+  
+</body>
+</html>
